@@ -76,7 +76,7 @@ http_access allow localhost
 http_access deny all
 http_port 8080
 http_port 8000
-http_port 80
+http_port 8888
 http_port 3128
 coredump_dir /var/spool/squid3
 refresh_pattern ^ftp: 1440 20% 10080
@@ -537,8 +537,24 @@ sed -i 's/listen = \/var\/run\/php7.0-fpm.sock/listen = 127.0.0.1:9000/g' /etc/p
 #Create Admin
 useradd admin
 echo "admin:kopet" | chpasswd
-
-
+# Install BadVPN UDPGw
+cd
+apt-get install -y cmake
+wget -q https://raw.githubusercontent.com/iriszz-my/autoscript/main/FILES/badvpn.zip
+unzip badvpn.zip
+cd badvpn-master
+mkdir build-badvpn
+cd build-badvpn
+cmake .. -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
+make install
+cd
+rm -r badvpn-master
+rm badvpn.zip
+screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100
+screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200
+screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
+screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7400
+screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7500
 # Create and Configure rc.local
 cat > /etc/rc.local <<-END
 #!/bin/sh -e
