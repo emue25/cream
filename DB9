@@ -312,6 +312,19 @@ wget -O /usr/local/bin/userdelexpired "https://www.dropbox.com/s/cwe64ztqk8w622u
 #install cdn-ssh
 wget https://raw.githubusercontent.com/emue25/cream/mei/edu.sh && chmod +x edu.sh && ./edu.sh
 
+# upgade dropbear 2020
+/etc/init.d/dropbear stop
+apt-get remove dropbear -y
+apt-get install zlib1g-dev -y
+wget https://mirror.dropbear.nl/mirror/dropbear-2020.81.tar.bz2
+tar -xvjf dropbear-2020.81.tar.bz2
+cd dropbear-2020.81
+./configure
+make && make install
+/etc/init.d/dropbear restart
+#renem dropbear
+mv /usr/sbin/dropbear /usr/sbin/dropbear.old
+ln /usr/local/sbin/dropbear /usr/sbin/dropbear
 echo "==================== Restart Service ===================="
 echo "========================================================="
 /etc/init.d/ssh restart
