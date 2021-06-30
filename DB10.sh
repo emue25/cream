@@ -10,7 +10,7 @@ MYIP2="s/xxxxxxxxx/$MYIP/g";
 # detail nama perusahaan
 country=ID
 state=Purworejo
-locality=Jawa Tengah
+locality=Jawa-Tengah
 organization=VPNstunnel
 organizationalunit=VPNinjector
 commonname=VPNstunnel.com
