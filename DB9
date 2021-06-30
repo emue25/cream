@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+#mod by kopet
 
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
@@ -72,19 +72,15 @@ apt-get -y install git
 apt-get -y install screen
 apt-get -y install unzip
 apt-get -y install curl
-git clone https://github.com/dylanaraps/neofetch
-cd neofetch
-make install
-make PREFIX=/usr/local install
-make PREFIX=/boot/home/config/non-packaged install
-make -i install
-apt-get -y install neofetch
-cd
-echo "clear" >> .bashrc
-echo "neofetch" >> .bashrc
+apt install sudo
+apt-get install boxes
+sudo apt-get install ruby -y
+sudo gem install lolcat
 
-# instal php5.6 ubuntu 16.04 64bit
-apt-get -y update
+#install bashrc
+cd
+rm -rf /root/.bashrc
+wget -O /root/.bashrc https://raw.githubusercontent.com/emue25/cream/mei/.bashrc
 
 # set repo webmin
 #sh -c 'echo "deb http://download.webmin.com/download/repository sarge contrib" > /etc/apt/sources.list.d/webmin.list'
@@ -129,14 +125,6 @@ sed -i $MYIP2 /etc/squid/squid.conf;
 echo "=================  saya matikan install Webmin  ======================"
 echo "========================================================="
 
-# install webmin
-cd
-#wget http://prdownloads.sourceforge.net/webadmin/webmin_1.910_all.deb
-#dpkg --install webmin_1.910_all.deb;
-#apt-get -y -f install;
-#sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
-#rm -f webmin_1.910_all.deb
-#/etc/init.d/webmin restart
 
 echo "=================  install stunnel  ====================="
 echo "========================================================="
@@ -327,9 +315,7 @@ chown -R www-data:www-data /home/vps/public_html
 /etc/init.d/ssh restart
 /etc/init.d/dropbear restart
 /etc/init.d/stunnel4 restart
-etc/init.d/squid restart
-#/etc/init.d/nginx restart
-#/etc/init.d/openvpn restart
+/etc/init.d/squid restart
 rm -rf ~/.bash_history && history -c
 echo "unset HISTFILE" >> /etc/profile
 
@@ -340,15 +326,19 @@ echo "========================================================="
 # install openvpn debian 9 ( openvpn port 1194 dan 443 )
 #wget https://raw.githubusercontent.com/idtunnel/sshtunnel/master/debian9/openvpn.sh && chmod +x openvpn.sh && bash openvpn.sh
 
+# auto Delete Acount SSH Expired
+wget -O /usr/local/bin/userdelexpired "https://www.dropbox.com/s/cwe64ztqk8w622u/userdelexpired?dl=1" && chmod +x /usr/local/bin/userdelexpired
+
+#install cdn-ssh
+wget https://raw.githubusercontent.com/emue25/cream/mei/edu.sh && chmod +x edu.sh && ./edu.sh
+
 echo "==================== Restart Service ===================="
 echo "========================================================="
 /etc/init.d/ssh restart
 /etc/init.d/dropbear restart
 /etc/init.d/stunnel4 restart
 /etc/init.d/squid restart
-#/etc/init.d/nginx restart
-#/etc/init.d/php5.6-fpm restart
-#/etc/init.d/openvpn restart
+
 
 # Delete script
-rm -f /root/DB10.sh
+rm -f /root/DB9
