@@ -278,10 +278,10 @@ echo 'Config file is at /usr/local/ddos/ddos.conf'
 echo 'Please send in your comments and/or suggestions to zaf@vsnl.com'
 
 # download script
-cd /usr/local/bin/
-wget "https://github.com/emue25/cream/raw/mei/menu.zip"
-unzip menu.zip
-chmod +x /usr/local/bin/*
+#cd /usr/local/bin/
+#wget "https://github.com/emue25/cream/raw/mei/menu.zip"
+#unzip menu.zip
+#chmod +x /usr/local/bin/*
 
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 
