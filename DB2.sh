@@ -15,12 +15,12 @@ SSH_Port2='90'
 # Your SSH Banner
 SSH_Banner='https://raw.githubusercontent.com/emue25/cream/mei/bannerssh'
 # Dropbear Ports
-Dropbear_Port1='444'
-Dropbear_Port2='442'
+Dropbear_Port1='442'
+Dropbear_Port2='77'
 
 # Stunnel Ports
-Stunnel_Port1='80' # through Openvpn
-Stunnel_Port2= 777 # through Openvpn
+Stunnel_Port1='1443' # through Openvpn
+Stunnel_Port2='777' # through Openvpn
 
 # OpenVPN Ports
 OpenVPN_TCP_Port='110'
